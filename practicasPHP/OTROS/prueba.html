@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <form id="form">
+        especie: <input type="text" name="especie" id="especie"> <br>
+        patas: <input type="text" name="patas" id="patas">
+        <button type="submit" id="boton" name="boton">enviar</button> <br>
+    </form>
+    <button id="btnVaciar">vaciar</button> <br>
+    <button id="btnMostrar">mostrar Storage</button>
+    <p id="parrafo">
+      <ul id="ul">
+
+      </ul>  
+    </p>
+
+    <script>
+        const boton = document.getElementById('boton')
+        boton.addEventListener('click', cargar)
+        
+        const ul = document.getElementById('ul')
+
+        const btnVaciar = document.getElementById('btnVaciar')
+        btnVaciar.addEventListener('click',function(){
+            localStorage.clear()
+        })
+
+        const parrafo = document.getElementById('parrafo')
+        const btnMostrar = document.getElementById('btnMostrar')
+        btnMostrar.addEventListener('click', ()=>{
+            var data = JSON.parse(localStorage.getItem("animales"))
+            console.log(data);
+
+        })
+
+        function cargar(e) {
+            e.preventDefault()
+
+            if (JSON.parse(localStorage.getItem("animales"))){
+
+                var animales = JSON.parse(localStorage.getItem("animales"))
+                let especie = document.getElementById('especie')
+                let patas = document.getElementById('patas')
+                
+                var animal = { "especie": especie.value, "patas": patas.value }
+                animales.push(animal)
+
+                localStorage.setItem('animales', JSON.stringify(animales))
+                especie.value = ""
+                patas.value=""
+                especie.focus()
+
+            } else {
+
+                var animales = []
+                let especie = document.getElementById('especie')
+                let patas = document.getElementById('patas')
+
+                var animal = { "especie": especie.value, "patas": patas.value }
+                animales.push(animal)
+
+                localStorage.setItem('animales', JSON.stringify(animales))
+
+                especie.value = ""
+                patas.value=""
+                especie.focus()
+            }
+
+        }
+
+        var animales = JSON.parse(localStorage.getItem("animales"))
+        console.log(animales);
+
+        function mostrar(){
+            animales.forEach(element => {
+                ul.innerHTML += 
+                `
+                <li>
+                    Especie ${element.especie}: - Cantidad de patas: ${element.patas}
+                </li>
+                `
+            })
+                
+            }
+ 
+
+        mostrar()
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <script src="../jquery.min.js"></script>
+    <title>Document</title>
+</head>
+
+<body>
+
+
+    <div class="container d-flex justify-content-center ">
+        <div class="w-50 mt-5 p-5 bg-secondary text-light rounded rounded-3">
+            <form action="">
+                nombre: <input id="nombre" type="text"> <br>
+                edad: <input id="edad" type="number"> <br>
+                e-mail: <input type="email" name="" id="email"> <br> <br>
+                nacionalidad: <br>
+                <input type="radio" name="nacion" id="arg" value="arg" checked> Argentino <br>
+                <input type="radio" name="nacion" id="otros" value="otros"> Otros <br>
+                <button id="boton">Enviar</button> <button id="botonBorrar">borrar</button>
+            </form>
+        </div>
+    </div>
+    <br>
+    <hr> <br>
+
+    <div class="container d-flex justify-content-center ">
+        <div class="w-50 mt-3">
+            <table class="table" id="tabla">
+                <thead>
+                    <th>Nombre</th>
+                    <th>edad</th>
+                    <th>email</th>
+                    <th>nacionalidad</th>
+                </thead>
+                <tbody id="tbody">
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+
+
+    <script>
+        $(document).ready(function () {
+
+
+            if (localStorage.getItem('personas')) {
+                console.log('tiene datos')
+                contenido = JSON.parse(localStorage.getItem('personas'));
+            } else {
+                console.log('no  tiene datos')
+                contenido = []
+            }
+
+            $('#boton').click(function (e) {
+                e.preventDefault();
+                let persona = {
+                    'nombre': $('#nombre').val(),
+                    'edad': $('#edad').val(),
+                    'email': $('#email').val(),
+                    'nacionalidad': $('input[name="nacion"]:checked').val()
+                }
+
+                console.log(persona.nacionalidad);
+
+                if (localStorage.getItem('personas')) {
+                    console.log('tiene datos')
+                    contenido = JSON.parse(localStorage.getItem('personas'));
+                } else {
+                    console.log('no  tiene datos')
+                    contenido = []
+                }
+                contenido.push(persona)
+                localStorage.setItem('personas', JSON.stringify(contenido))
+
+                listar()
+
+                // resetear formulario 
+                $('#nombre').val('')
+                $('#edad').val('')
+                $('#email').val('')
+                $('#nombre').focus()
+            });
+
+            $('#botonBorrar').click(function (e) {
+                e.preventDefault();
+                localStorage.clear()
+                listar()
+            });
+
+            $('#tbody ').click(function (e) {
+                e.preventDefault();
+
+                if (localStorage.getItem('personas')) {
+                    console.log('tiene datos')
+                    contenido = JSON.parse(localStorage.getItem('personas'));
+                } else {
+                    console.log('no  tiene datos')
+                    contenido = []
+                }
+
+                contenido.forEach(function(cada, index){
+                    let emailBuscado = e.target.id
+                   if(cada.email == emailBuscado){
+                    console.log(index);
+                    contenido.splice(index)
+                    listar()
+                   }
+                })
+
+                // let encontrado = contenido.indexOf('ecometto@hotmail.com')
+                // console.log(encontrado)
+
+            });
+
+
+            function listar() {
+                $('#tbody').html('')
+
+                if (localStorage.getItem('personas')) {
+                    contenido.forEach(element => {
+                        $('#tbody').html($('#tbody').html() +
+                            ` <tr>
+                        <td>${element.nombre}</td>
+                        <td>${element.edad}</td>
+                        <td>${element.email}</td>
+                        <td>${element.nacionalidad}</td>
+                        <td><button id='${element.email}' >borrar</button></td>
+                    </tr>`
+                        )
+                    });
+
+                } else {
+                    $('#tbody').html('')
+                }
+            }
+
+
+            listar()
+
+
+        });
+
+
+    </script>
+</body>
+
+</html>
