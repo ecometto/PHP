@@ -66,7 +66,7 @@
                 </a>
                 <div class="navbar-dropdown">
 
-                    <a class="navbar-item">
+                    <a href="index.php?action=mov_ingresos" class="navbar-item">
                         Ingreso de Materiales
                     </a>
                     <hr class="navbar-divider">
