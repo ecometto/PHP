@@ -1,0 +1,29 @@
+.formContainer{
+position:absolute;
+height: 100vh;
+width: 100%;
+background-color: rgba(0,0,0,0.5);
+display: flex;
+justify-content: center;
+align-items: center;
+display: none;
+}
+
+form{
+    position: relative;
+}
+
+.close{
+    height: 35px;
+    width: 35px;
+    text-align: center;
+    position: absolute;
+    top: 5px;
+    right: 10px;
+    font-size: 20px;
+    cursor:pointer;
+    background-color:gray;
+    border-radius: 50%;
+    border: solid 1px black;
+    font-weight: 700;
+}

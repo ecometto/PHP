@@ -37,7 +37,7 @@ if (!isset($_SESSION['user_mail'])) {
     <div class="container-fluid">
 
         <div class="row mt-5">
-            <div class="col-md-4 offset-md-2 my-3">
+            <div class="col-md-4 offset-md-2 mt-3">
                 <div class="card bg-light">
                     <div class="card-body">
                         <h5 class="card-title text-center bg-secondary text-light p-4">GESTION DE INVENTARIOS</h5>
@@ -45,22 +45,20 @@ if (!isset($_SESSION['user_mail'])) {
                             <a class="btn btn-info col-12 my-3" href="./vistas/stock/mov_ingreso_stock.php">Registrar Ingreso de Materiales</a> <br>
                             <a class="btn btn-info col-12 my-3" href="./vistas/stock/mov_egreso_stock.php">Registrar Egreso de Materiales</a> <br>
                             <a class="btn btn-info col-12 my-3" href="./vistas/stock/maestro_articulos.php">Maestro de articulos</a><br>
-                            <a class="btn btn-info col-12 my-3" href="./vistas/stock/reportes_movimientos.php">Reporte movimientos</a> <br>
-                            <a class="btn btn-info col-12 my-3" href="./vistas/stock/reportes_stock.php">Reporte stock</a> <br>
+                            <a class="btn btn-info col-12 my-3" href="./vistas/stock/reportes_stock.php">Reportes</a> <br>
                         </div>
                     </div>
                 </div>
             </div>
 
-            <div class="col-md-4  my-3">
+            <div class="col-md-4  mt-3">
                 <div class="card bg-light">
                     <div class="card-body">
                         <h5 class="card-title text-center bg-secondary text-light  p-4">GESTION DE COMPRAS</h5>
                         <div class="bg-light">
                             <a class="btn btn-info col-12 my-3" href="./vistas/compras/ingreso_solicitudes.php">Ingreso de solicitudes</a><br>
                             <a class="btn btn-info col-12 my-3" href="./vistas/compras/seguimiento_solicitudes.php">Seguimiento de solicitudes</a> <br>
-                            <a class="btn btn-info col-12 my-3" href="./vistas/compras/reportes_solicitudes.php">Reporte Movimientos</a> <br>
-                           
+                            <a class="btn btn-info col-12 my-3" href="./vistas/compras/reportes_solicitudes.php">Reportes</a> <br>
                         </div>
                     </div>
                 </div>

@@ -10,7 +10,7 @@
 
 <body>
 
-    <div class="footer">
+    <div class="footer fixed-bottom bg-secondary text-dark text-end">
         <p>Powered by CEDdeveloper</p>
     </div>
 

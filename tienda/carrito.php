@@ -1,3 +1,18 @@
+<<<<<<< HEAD
+<?php 
+
+if(isset($_POST['comprar'])){
+    $id = openssl_decrypt($_POST['id'],COD, KEY,TRUE,IV);
+    $nombre = $_POST['nombre'];
+    $precio = $_POST['precio'];
+    $descripcion = $_POST['descripcion'];
+
+    echo $id
+
+}
+
+?>
+=======
 <!DOCTYPE html>
 <html lang="en">
 
@@ -34,3 +49,4 @@
 </body>
 
 </html>
+>>>>>>> 838c3cd99489c4b2534aed2cae8408a1dfa0c790

@@ -5,8 +5,10 @@
     box-sizing: border-box;
 }
 
+
 .contenedor{
     margin-top: 60px;
+    margin-bottom: 60px;
 }
 
 .card-img{
@@ -21,8 +23,20 @@
     height:160px;
 }
 
+.desc{
+    height: 45px;
+    overflow: hidden;
+}
+
+.desc:hover{
+    height: auto;
+    overflow:visible;
+}
 
 .footer{
+<<<<<<< HEAD
+    background-color: blueviolet;
+=======
     position: fixed;
     bottom: 0px;
     width: 100%;
@@ -31,4 +45,5 @@
     padding: 5px 30px;
     text-align: end;
     color: whitesmoke;
+>>>>>>> 838c3cd99489c4b2534aed2cae8408a1dfa0c790
 }

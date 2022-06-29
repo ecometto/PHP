@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 25-03-2022 a las 20:22:38
--- Versión del servidor: 10.4.21-MariaDB
--- Versión de PHP: 8.0.10
+-- Tiempo de generación: 22-03-2022 a las 11:31:07
+-- Versión del servidor: 10.4.20-MariaDB
+-- Versión de PHP: 8.0.9
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -40,6 +40,20 @@ CREATE TABLE `detalles_movimiento` (
 --
 
 INSERT INTO `detalles_movimiento` (`det_id`, `det_movid`, `det_itemid`, `det_cantidad`, `observaciones`) VALUES
+(2, 19, 14, 10, '12131313'),
+(3, 19, 15, 12, '1323135153'),
+(4, 20, 16, 8, '21231 idhfiodahsif dasñhf  shd'),
+(5, 20, 13, 55, 'fao afoaoa ggreggre'),
+(6, 20, 23, 30, 'vmas gadgtgj eqtqregtre'),
+(7, 21, 14, 3, 'nada'),
+(8, 21, 15, 2, 'nada 2'),
+(9, 21, 21, 100, ' ndcnds'),
+(10, 22, 13, -20, '12123'),
+(11, 22, 21, -100, 'ninguna'),
+(12, 23, 20, -100, 'ninguna'),
+(13, 23, 21, -100, 'ninguna'),
+(14, 24, 14, -2, '1213121'),
+(15, 24, 22, -150, '1213213'),
 (16, 25, 22, -20, '120336'),
 (17, 25, 13, -10, '123'),
 (18, 26, 13, 100, 'primera'),
@@ -52,31 +66,7 @@ INSERT INTO `detalles_movimiento` (`det_id`, `det_movid`, `det_itemid`, `det_can
 (25, 29, 25, 100, 'oc 2020'),
 (26, 29, 13, 50, 'oc'),
 (27, 30, 21, 100, 'richeta legajo 1'),
-(28, 30, 20, 100, 'riche'),
-(29, 0, 28, 100, 'COMPRA RICHETA RTO 2222'),
-(30, 0, 25, 50, 'RICHETTA RTA2222'),
-(44, 38, 20, 100, 'DDD'),
-(45, 38, 21, 200, 'GGG'),
-(46, 38, 27, 5, 'FF'),
-(47, 39, 21, -50, 'BBB'),
-(48, 39, 20, -50, 'FFF');
-
--- --------------------------------------------------------
-
---
--- Estructura de tabla para la tabla `detalle_solicitudes`
---
-
-CREATE TABLE `detalle_solicitudes` (
-  `det_id` int(10) NOT NULL,
-  `det_sol_id` int(10) DEFAULT NULL,
-  `det_prodId` mediumint(8) DEFAULT NULL,
-  `det_cant` int(10) DEFAULT NULL,
-  `det_umedidaId` tinyint(4) DEFAULT NULL,
-  `det_observaciones` varchar(100) DEFAULT NULL,
-  `det_estado` enum('en curso','finalizado') DEFAULT NULL,
-  `det_cant_rec` int(10) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+(28, 30, 20, 100, 'riche');
 
 -- --------------------------------------------------------
 
@@ -95,15 +85,35 @@ CREATE TABLE `movimientos` (
 --
 
 INSERT INTO `movimientos` (`mov_id`, `mov_fecha`, `mov_tipo`) VALUES
+(2, '2022-02-24', 'Entrada'),
+(3, '2022-02-24', 'Entrada'),
+(4, '2022-02-24', 'Entrada'),
+(5, '2022-02-24', 'Entrada'),
+(6, '2022-02-24', 'Entrada'),
+(7, '2022-02-24', 'Entrada'),
+(8, '2022-02-24', 'Entrada'),
+(9, '2022-02-24', 'Entrada'),
+(10, '2022-02-24', 'Entrada'),
+(11, '2022-02-24', 'Entrada'),
+(12, '2022-02-24', 'Entrada'),
+(13, '2022-02-24', 'Entrada'),
+(14, '2022-02-24', 'Entrada'),
+(15, '2022-02-24', 'Entrada'),
+(16, '2022-02-24', 'Entrada'),
+(17, '2022-02-24', 'Entrada'),
+(18, '2022-02-24', 'Entrada'),
+(19, '2022-02-24', 'Entrada'),
+(20, '2022-02-24', 'Entrada'),
+(21, '2022-03-03', 'Entrada'),
+(22, '2022-03-03', 'Entrada'),
+(23, '2022-03-03', 'Entrada'),
+(24, '2022-03-03', 'Entrada'),
 (25, '2022-03-03', 'Salida'),
 (26, '2022-03-03', 'Entrada'),
 (27, '2022-03-03', 'Salida'),
 (28, '2022-03-04', 'Entrada'),
 (29, '2022-03-22', 'Entrada'),
-(30, '2022-03-22', 'Entrada'),
-(31, '2022-03-25', 'Entrada'),
-(38, '2022-03-25', 'Entrada'),
-(39, '2022-03-25', 'Salida');
+(30, '2022-03-22', 'Entrada');
 
 -- --------------------------------------------------------
 
@@ -117,7 +127,7 @@ CREATE TABLE `productos` (
   `prod_descripcion` varchar(100) DEFAULT NULL,
   `prod_umedidaId` tinyint(4) DEFAULT NULL,
   `prod_detalles` varchar(200) DEFAULT NULL,
-  `prod_estado` enum('habilitado','inhabilitado') DEFAULT 'habilitado',
+  `prod_estado` enum('habilitado','inabilitado') DEFAULT 'habilitado',
   `stock` int(10) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -130,14 +140,12 @@ INSERT INTO `productos` (`prod_id`, `prod_rubroId`, `prod_descripcion`, `prod_um
 (14, 3, 'motor forzador westric 1500w', 1, 'marca davica', NULL, 9),
 (15, 3, 'Cambiando descripcion', 1, 'detalles adicionales agreados', NULL, 10),
 (16, 3, 'motor forzador westric 1500w 2000RPM ', 1, '  marca davica 2 . que pasa si le pongo mucho testo . vamos a ver como se ve en la tabla', NULL, 0),
-(20, 2, 'cable 1mm2 rojo', 2, 'homologado', NULL, 150),
-(21, 2, 'cable 1mm2 negro', 2, 'homologado', NULL, 250),
+(20, 2, 'cable 1mm2 rojo', 2, 'homologado', NULL, 100),
+(21, 2, 'cable 1mm2 negro', 2, 'homologado', NULL, 100),
 (22, 4, 'latex blanco interior', 3, 'Es por litros', NULL, 40),
 (23, 4, 'pincel n15 (37mm)', 1, 'marca galgo', NULL, 20),
-(25, 1, 'tubo fluorescente', 1, 'phillip', NULL, 150),
-(26, 4, 'pincel  25mm', 1, '62mm                                    ', NULL, 0),
-(27, 3, 'caño de cobre 3/8 flexible', 2, 'flexible pared 1.5', NULL, 5),
-(28, 2, 'TOMACORRIENTES DOBLE', 1, 'NINGUNO', NULL, 100);
+(25, 1, 'tubo fluorescente', 1, 'phillip', NULL, 100),
+(26, 4, 'pincel  25mm', 1, '62mm                                    ', NULL, 0);
 
 -- --------------------------------------------------------
 
@@ -164,23 +172,6 @@ INSERT INTO `rubros` (`rubro_id`, `rubro_descripcion`, `rubro_estado`) VALUES
 (6, 'plomeria', 'habilitado'),
 (7, 'metalurgicos', 'habilitado'),
 (8, 'construccion en seco', 'habilitado');
-
--- --------------------------------------------------------
-
---
--- Estructura de tabla para la tabla `solicitudes`
---
-
-CREATE TABLE `solicitudes` (
-  `sol_id` int(10) NOT NULL,
-  `sol_descripcion` varchar(200) DEFAULT NULL,
-  `sol_OTref` varchar(50) DEFAULT NULL,
-  `sol_fecha_nec` date DEFAULT NULL,
-  `sol_prioridad` enum('alta','media','baja') DEFAULT 'media',
-  `user_id` smallint(4) DEFAULT NULL,
-  `sol_fecha_ped` date DEFAULT NULL,
-  `sol_estado` enum('generado','en compras','recibido') DEFAULT 'generado'
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -238,15 +229,6 @@ ALTER TABLE `detalles_movimiento`
   ADD PRIMARY KEY (`det_id`);
 
 --
--- Indices de la tabla `detalle_solicitudes`
---
-ALTER TABLE `detalle_solicitudes`
-  ADD PRIMARY KEY (`det_id`),
-  ADD KEY `fk_productoID` (`det_prodId`),
-  ADD KEY `fk_solicitudID` (`det_sol_id`),
-  ADD KEY `fk_umedidaID` (`det_umedidaId`);
-
---
 -- Indices de la tabla `movimientos`
 --
 ALTER TABLE `movimientos`
@@ -265,12 +247,6 @@ ALTER TABLE `productos`
 --
 ALTER TABLE `rubros`
   ADD PRIMARY KEY (`rubro_id`);
-
---
--- Indices de la tabla `solicitudes`
---
-ALTER TABLE `solicitudes`
-  ADD PRIMARY KEY (`sol_id`);
 
 --
 -- Indices de la tabla `umedidas`
@@ -292,37 +268,25 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT de la tabla `detalles_movimiento`
 --
 ALTER TABLE `detalles_movimiento`
-  MODIFY `det_id` tinyint(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=49;
-
---
--- AUTO_INCREMENT de la tabla `detalle_solicitudes`
---
-ALTER TABLE `detalle_solicitudes`
-  MODIFY `det_id` int(10) NOT NULL AUTO_INCREMENT;
+  MODIFY `det_id` tinyint(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
 
 --
 -- AUTO_INCREMENT de la tabla `movimientos`
 --
 ALTER TABLE `movimientos`
-  MODIFY `mov_id` mediumint(8) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=40;
+  MODIFY `mov_id` mediumint(8) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
 
 --
 -- AUTO_INCREMENT de la tabla `productos`
 --
 ALTER TABLE `productos`
-  MODIFY `prod_id` mediumint(8) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
+  MODIFY `prod_id` mediumint(8) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
 
 --
 -- AUTO_INCREMENT de la tabla `rubros`
 --
 ALTER TABLE `rubros`
   MODIFY `rubro_id` tinyint(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
-
---
--- AUTO_INCREMENT de la tabla `solicitudes`
---
-ALTER TABLE `solicitudes`
-  MODIFY `sol_id` int(10) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de la tabla `umedidas`
@@ -339,14 +303,6 @@ ALTER TABLE `users`
 --
 -- Restricciones para tablas volcadas
 --
-
---
--- Filtros para la tabla `detalle_solicitudes`
---
-ALTER TABLE `detalle_solicitudes`
-  ADD CONSTRAINT `fk_productoID` FOREIGN KEY (`det_prodId`) REFERENCES `productos` (`prod_id`),
-  ADD CONSTRAINT `fk_solicitudID` FOREIGN KEY (`det_sol_id`) REFERENCES `solicitudes` (`sol_id`),
-  ADD CONSTRAINT `fk_umedidaID` FOREIGN KEY (`det_umedidaId`) REFERENCES `umedidas` (`umedida_id`);
 
 --
 -- Filtros para la tabla `productos`

@@ -1,4 +1,5 @@
 <?php 
+
 $apellido = $_POST['apellido'];
 $nombre = $_POST['nombre'];
 $edad = $_POST['edad'];
@@ -16,10 +17,6 @@ echo "Bienvenido Sr. $apellido, $nombre. Con su edad de $edad puede ingresar";
 //     echo "El cliente $nombre $apellido fue ingresado correctamente";
 
 // }
-
-
-
-.
 
 
 

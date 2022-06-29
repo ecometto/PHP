@@ -21,19 +21,15 @@ include "../../../conexion.php";
 
     <!-- datatables responsive  -->
     <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"> -->
-    <!-- <link rel="stylesheet" href="https://cdn.datatables.net/1.11.4/css/dataTables.bootstrap.min.css"> -->
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.11.4/css/dataTables.bootstrap.min.css">
     <link rel="stylesheet" href="https://cdn.datatables.net/fixedheader/3.2.1/css/fixedHeader.bootstrap.min.css">
     <link rel="stylesheet" href="https://cdn.datatables.net/responsive/2.2.9/css/responsive.bootstrap.min.css">
-    <link rel="stylesheet" href="//cdn.datatables.net/1.11.5/css/jquery.dataTables.min.css">
 
     <!-- bootstrap  -->
     <link rel="stylesheet" href="../../css/bootstrap.min.css">
 
     <!-- Estilos propios  -->
     <style>
-        *{
-            font: size 1.5rem;
-        }
         .nuevo {
             display: none;
         }
@@ -53,9 +49,7 @@ include "../../../conexion.php";
 
     <div class="container-fluid my-3">
         <div class="row d-flex justify-content-center">
-            <div>
-                <a class="btn btn-success mt-3" href="./alta_articulo.php">Cargar Nuevo Articulo</button></a>
-            </div>
+            <div><button class="btn btn-success mt-3" id="btn_nuevo">Cargar Nuevo Articulo</button></div>
             <div class="col-md-6 nuevo">
                 <div class="card">
                     <div class="card-header text-center">
@@ -148,7 +142,7 @@ include "../../../conexion.php";
                             <tr>
                                 <td><?php echo $fila[0];?></td>
                                 <td><?php echo $fila[1];?></td>
-                                <td><?php echo $fila[2];?></td>
+                                <td><?php echo $fila[2];?>]</td>
                                 <td><?php echo $fila[3];?></td>
                                 <td><?php echo $fila[4];?></td>
                                 <td class='d-flex'>     
@@ -174,12 +168,11 @@ include "../../../conexion.php";
 
     <!-- datatables responsive  -->
     <script src="../../js/jquery.min.js"></script>
-    <!-- <script src="https://cdn.datatables.net/1.11.4/js/jquery.dataTables.min.js"></script> -->
-    <!-- <script src="https://cdn.datatables.net/1.11.4/js/dataTables.bootstrap.min.js"></script> -->
+    <script src="https://cdn.datatables.net/1.11.4/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.11.4/js/dataTables.bootstrap.min.js"></script>
     <script src="https://cdn.datatables.net/fixedheader/3.2.1/js/dataTables.fixedHeader.min.js"></script>
     <script src="https://cdn.datatables.net/responsive/2.2.9/js/dataTables.responsive.min.js"></script>
     <script src="https://cdn.datatables.net/responsive/2.2.9/js/responsive.bootstrap.min.js"></script>
-    <script src="//cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
 
 
     <script>

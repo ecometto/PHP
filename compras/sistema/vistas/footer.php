@@ -7,7 +7,7 @@
     </style>
 
 
-<div class="footer container-fluid  fixed-bottom text-light text-end px-2">
+<div class="footer container-fluid  fixed-bottom text-light text-end">
 
     <p>Desarrollado por CEDdeveloper</p>
 
