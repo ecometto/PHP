@@ -14,7 +14,6 @@ if(isset($_GET['action']) && $_GET['action']=="load" ){
 }
 
 
-
 // ENVIANDO DATO DE UN SOLO USUARIO
 if(isset($_GET['action']) && $_GET['action']=="getUser" ){
     $id = $_GET['id'];
@@ -37,6 +36,20 @@ if(isset($_POST['action']) && $_POST['action'] == "insertNewUser"){
     
     echo $ejecutar;
 }
+
+
+// EDITANDO REGISTRO DE USUARIO
+if(isset($_POST['action']) && $_POST['action'] == "updateUser"){
+    $id = $_POST['id'];
+    $user = $_POST['user'];
+    $mail = $_POST['mail'];
+
+    $query = "update prueba set usuario = '$user', mail = '$mail' where id = $id";
+    $ejecutar = mysqli_query($con, $query);
+    echo $ejecutar;
+
+}
+
 
 
 // ELIMINANDO REGISTRO 

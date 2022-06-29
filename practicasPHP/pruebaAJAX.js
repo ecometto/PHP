@@ -53,14 +53,14 @@ $(document).ready(function () {
   
     
     // -------------------------------------------------------------------- 
-    // ABRIR VENTANA NUEVO USUARIO + EDITAR  
+    // ABRIR VENTANA NUEVO USUARIO
     function newUser() {
         document.getElementById('formContainer').style.display = "flex";
         document.getElementById('button').innerText = "Nuevo"
         document.getElementById('userName').focus()
     }
     
-    // MANEJANDO EL MISMO FORMULARIO SEGÚN NUEVO O EDITAR 
+    // MANEJANDO SUBMIT FORMULARIO (NUEVO + EDITAR) 
     function hanndlerFormSubmit(e){
         e.preventDefault()
         if(document.getElementById('button').innerText == "Nuevo"){
@@ -91,27 +91,12 @@ $(document).ready(function () {
         getData()
     }
 
-
-    const table = document.getElementById('tabla')
-    tabla.addEventListener('click', handleUsers)
-
-    function handleUsers(e) {
-        const action = e.target.dataset.action
-        if (action === "editar") {
-            cargarDatosinputUpdate()
-         
-        }
-        else if (action === "eliminar") {
-            deleteItem(e)
-        }
-    }
-
-    // -------------------------------------------------------------------- 
-    // EDITANDO USUARIOS     
-    function updateUser() {
+      // EDITANDO USUARIOS     
+      function updateUser() {
+        let id = document.getElementById('userId').value
         let user = document.getElementById('userName').value
         let mail = document.getElementById('userMail').value
-        let data = { 'user': user, 'mail': mail, 'action':'updateNewUser' }
+        let data = { 'user': user, 'mail': mail, 'action':'updateUser', 'id':id }
 
         $.ajax({
             type: "POST",
@@ -119,29 +104,41 @@ $(document).ready(function () {
             data: data,
             // dataType: "dataType",
             success: function (res) {
+                console.log(res);
                 alert('Registro Modificado correctamente')
                 document.getElementById('userName').value = ""
                 document.getElementById('userMail').value = ""
                 document.getElementById('formContainer').style.display = "none";
-
             }
         })
 
         getData()
     }
 
-    // ELIMINANDO USUARIOS
-    function cargarDatosinputUpdate(e) {
 
+// ----------------------------------------------------------- 
+    // MANEJANDO ACCIONES BOTONES DE TABLA 
+    document.getElementById('tabla').addEventListener('click', handleUsers)
+
+    function handleUsers(e) {
+        const action = e.target.dataset.action
+        if (action === "editar") {
+            cargarDatosinputUpdate(e)
+        } else if (action === "eliminar") {
+            deleteItem(e)
+        }
+    }
+
+    function cargarDatosinputUpdate(e) {
         const id = e.target.dataset.id
         $.ajax({
             type: "GET",
             url: "funciones.php",
             data: { 'action': 'getUser', 'id' : id },
             success: function (res) {
-
                 const datos = JSON.parse(res)
-                 document.getElementById('userName').value = datos.usuario
+                document.getElementById('userId').value = datos.id
+                document.getElementById('userName').value = datos.usuario
                 document.getElementById('userMail').value = datos.mail
                 document.getElementById('button').innerText = "Modificar"
                 document.getElementById('formContainer').style.display = "flex"
@@ -149,7 +146,13 @@ $(document).ready(function () {
         })
     }
 
+    // -------------------------------------------------------------------- 
+  
 
+
+
+
+    // ELIMINANDO USUARIOS
     function deleteItem(e) {
         const item = e.target.dataset.id
         $.ajax({
@@ -168,7 +171,6 @@ $(document).ready(function () {
         })
     }
 
-    // -------------------------------------------------------------------- 
 
 
 
