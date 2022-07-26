@@ -1,0 +1,15 @@
+#para permitir reescritura de la URL
+RewriteEngine On
+
+#condiciones para reescritura (si el filename no existe como archivo -f , ni como directorio -d)
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+
+
+#Accion de reescritura (se puede colocar el .htaccess en otra carpeta diferente del index.php)
+# RewriteBase /PROGRAMACION/PHP/MVC/public
+# RewriteRule ^(.+)$ index.php?url=$1 [QSA,L]
+
+#Accion de reescritura (este también funciona cundo el index.php está en la mism ubicación que .htaccess)
+RewriteRule ^ index.php [QSA,L]
+
