@@ -3,13 +3,12 @@ session_start();
 if(!isset($_SESSION['mail'])){
     header("location: ../index.php");
 }
-
 include '../config/conexion.php';
-
 ?>
 
 
 <?php require "../include/head.php"; ?>
+
 <?php require "../include/header.php"; ?>
 
 <body>

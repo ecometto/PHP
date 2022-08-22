@@ -1,41 +1,42 @@
-<?php
-
-
-?>
-
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
-
 <body>
-    <h1>datos de productos...</h1>
+<form action="view_nuevo.php">
+    <button>Ingrear Nuevo</button>
+</form>
+
+    <h3>LISTA DE PRODUCTOS</h3>
     <table>
         <thead>
             <tr>
-                <th>Nombre</th>
-                <th>Precio</th>
+                <th>DESCRIPCION</th>
+                <th>PRICE</th>
             </tr>
         </thead>
+
         <tbody>
             <?php 
-                foreach($datos as $producto){
-                    echo "
+            foreach($datos as $dato){
+                echo "
+                <tbody>
                     <tr>
-                        <td>$producto[1]</td>
-                        <td>$producto[2]</td>
+                        <td>$dato[1]</td>
+                        <td>$dato[2]</td>
                     </tr>
-                    ";
-                }
+                </tbody>";
+            }
             ?>
         </tbody>
 
+        
     </table>
-</body>
 
+
+</body>
 </html>
