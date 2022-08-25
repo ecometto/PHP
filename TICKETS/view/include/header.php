@@ -1,3 +1,5 @@
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -7,6 +9,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- bootstrap -->
     <link rel="stylesheet" href="lib/css/bootstrap.css">
+    <!-- estlos propios  -->
+    <link rel="stylesheet" href="view/include/include.css">
+
     <title>Document</title>
 </head>
 
@@ -20,9 +25,12 @@
             <H3>SISTEMA DE SOLICITUDES</H3>
         </div>
             <div class="d-flex justify-content-end p-2">
-                <form action="config/closeSession.php" method="POST">
-                    <button class="btn btn-dark">Close Session</button>
-                </form>
+         
+                    <?php 
+                        echo "User: $_SESSION[user_mail]";
+                    ?>
+                    <a href="config/closeSession.php" class="btn btn-dark">Close Session</a>
+        
             </div>
 </di>
     </header>

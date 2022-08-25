@@ -8,8 +8,10 @@ class User{
         $query = "select * from users where mail = '$mail' and pass = '$pass'";
         $ejecutar = mysqli_query($con, $query);
         $validado = mysqli_num_rows($ejecutar);
+        
         if($validado === 1){
-            return $validado;
+            $data = mysqli_fetch_array($ejecutar);
+            return  $data;
         } else{
             header('Location: login.php?m=noValido');
         }

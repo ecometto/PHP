@@ -1,7 +1,7 @@
 <?php 
 class Conexion{
     public static function Conectar(){
-        $con = mysqli_connect('localhost','root','','prueba');
+        $con = mysqli_connect('localhost','root','','tickets');
         // if($con){
         //     echo 'conexion exitosa';
         // } else{

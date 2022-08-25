@@ -1,23 +1,26 @@
 <?php
 
 if (isset($_POST['log'])) {
+
     $mail = $_POST['mail'];
     $pass = $_POST['pass'];
 
-    echo $mail . '<br>';
-    echo $pass;
-
     if (empty($mail) or empty($pass)) {
         header('Location: login.php?m=empty');
+
     } else {
+
         include_once 'model/model_user.php';
-        $validado = User::login($mail, $pass);
-        if($validado){
+        $user_id = User::login($mail, $pass);
+        echo $user_id[0];
+
+        if ($user_id) {
             session_start();
-            $_SESSION['mail'] = $mail;
-            
-            header('Location: index.php');
-        } 
+            $_SESSION['user_id'] = $user_id[0];
+            $_SESSION['user_mail'] = $user_id[1];
+
+            header('Location: index.php?action=index&id='.$_SESSION['user_id'] );
+        }
     }
 }
 
@@ -45,29 +48,46 @@ if (isset($_GET['m']) and $_GET['m'] === "noValido") {
     <title>Document</title>
 </head>
 
+<style>
+    body {
+        background: url('public/img/fondo1.png');
+        background-position: center;
+        background-size: cover;
+    }
+
+    .form-container {
+        padding: 40px;
+        background-color: rgba(20, 20, 20, 0.5);
+        border-radius: 20px;
+        text-align: center;
+    }
+</style>
+
 <body>
 
-    <div class="mt-4 rounded container bg-primary d-flex justify-content-center align-items-center text-center" style="height: 500px; width: 350px">
-        <div>
-            <h5>FORMULARIO DE INGRESO</h5>
-            <form action="#" method="POST">
-                <input class="form-control" type="text" name="mail" placeholder="Ingrese su e-mail"> <br>
-                <input class="form-control" type="text" name="pass" placeholder="Ingrese su password"> <br>
-                <button class="btn btn-success" name="log">clik para ingresar</button>
-            </form>
+    <div class="container vh-100 d-flex justify-content-center align-items-center">
+        <div class="form-container">
+            <div>
+                <h5 class="my-4">FORMULARIO DE INGRESO</h5>
+                <form action="#" method="POST">
+                    <input class="form-control" type="text" name="mail" placeholder="Ingrese su e-mail"> <br>
+                    <input class="form-control" type="password" name="pass" placeholder="Ingrese su password"> <br>
+                    <button class="btn btn-success" name="log">clik para ingresar</button>
+                </form>
 
-            <hr>
-            <br>
+                <hr>
+                <br>
 
-            <?php
-            if ($mensaje != "") {
-                echo "
-                        <div class='alert alert-danger'>
-                            $mensaje       
-                        </div>";
-            }
-            ?>
+                <?php
+                if ($mensaje != "") {
+                    echo "
+                         <div class='alert alert-danger'>
+                             $mensaje       
+                         </div>";
+                }
+                ?>
 
+            </div>
         </div>
     </div>
 
