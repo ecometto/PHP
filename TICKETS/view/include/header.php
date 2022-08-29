@@ -7,8 +7,10 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- bootstrap -->
-    <link rel="stylesheet" href="lib/css/bootstrap.css">
+    <!-- bootstrap e Icons-->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
+
     <!-- estlos propios  -->
     <link rel="stylesheet" href="view/include/include.css">
 
@@ -24,12 +26,12 @@
         <div>
             <H3>SISTEMA DE SOLICITUDES</H3>
         </div>
-            <div class="d-flex justify-content-end p-2">
+            <div class="d-flex flex-column justify-content-center align-items-center p-2">
          
                     <?php 
                         echo "User: $_SESSION[user_mail]";
-                    ?>
-                    <a href="config/closeSession.php" class="btn btn-dark">Close Session</a>
+                    ?> <br>
+                    <a href="config/closeSession.php" class="btn btn-dark btn-sm">Close Session</a>
         
             </div>
 </di>

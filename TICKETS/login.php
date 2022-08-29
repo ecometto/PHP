@@ -18,6 +18,7 @@ if (isset($_POST['log'])) {
             session_start();
             $_SESSION['user_id'] = $user_id[0];
             $_SESSION['user_mail'] = $user_id[1];
+            $_SESSION['user_tipo'] = $user_id[3];
 
             header('Location: index.php?action=index&id='.$_SESSION['user_id'] );
         }

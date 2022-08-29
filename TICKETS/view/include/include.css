@@ -1,7 +1,7 @@
 .side_menu{
     background-color: aqua;
     width: 150px;
-    height: 100vh;
+    height: 100%;
     float:left
 }
 .form-container{
@@ -11,5 +11,6 @@
     background-color: rgb(220,220,220);
     padding: 30px;
     border-radius: 30px;
-
 }
+
+
