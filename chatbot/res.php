@@ -1,5 +1,26 @@
 <?php
-$con = mysqli_connect("localhost", "root", "", "bot");
+include './conexion.php';
+
+$con = Conexion::conectar();
+// $con = mysqli_connect("localhost", "root", "", "bot");
+
+if (isset($_GET['login'])) {
+    $celular = $_GET['login'];
+    $sql = "select * from clientes where telefono = $celular";
+    $query = mysqli_query($con, $sql);
+    // var_dump($query);
+
+    if ($query) {
+        if (mysqli_num_rows($query) > 0) {
+            $res = mysqli_fetch_array($query);
+            echo json_encode($res);
+        } else {
+            echo json_encode("errorUsuario");
+        }
+    } else {
+        echo json_encode("errorUsuario");
+    }
+}
 
 if (isset($_GET['pregunta'])) {
     $pregunta = $_GET['pregunta'];
@@ -24,23 +45,5 @@ if (isset($_GET['pregunta'])) {
         } else {
             echo json_encode("errorRespuesta");
         }
-    }
-}
-
-if (isset($_GET['login'])) {
-    $celular = $_GET['login'];
-    $sql = "select * from clientes where telefono = $celular";
-    $query = mysqli_query($con, $sql);
-    // var_dump($query);
-
-    if ($query) {
-        if (mysqli_num_rows($query) > 0) {
-            $res = mysqli_fetch_array($query);
-            echo json_encode($res);
-        } else {
-            echo json_encode("errorUsuario");
-        }
-    } else {
-        echo json_encode("errorUsuario");
     }
 }

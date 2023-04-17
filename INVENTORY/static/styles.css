@@ -1,0 +1,15 @@
+body{
+    background-color: aqua;
+}
+
+.chevron-container{
+    position: relative;
+    display: flex;
+    justify-content: end;
+    margin-top: 10px;
+    margin-right: 10px;
+}
+
+.form-container-alta{
+    display: none;  
+}
