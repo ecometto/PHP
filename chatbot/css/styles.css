@@ -1,0 +1,131 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+.main {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-image: url('../img/bot.jpg');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;
+
+}
+
+
+.main .chat-container {
+    height: 100%;
+    width: 400px;
+    height: 500px;
+    background-color: rgba(200,200,200,0.5);
+    /* border: solid 1px black; */
+    border-radius: 20px;
+    position: relative;
+}
+
+.main .chat-container H4 {
+    text-align: center;
+    border-bottom: 1px solid silver;;
+    width: 100%;
+    padding: 10px;
+    margin-top: 20px;
+    font-weight: 900;
+    font-size: 24px;
+}
+
+/* ----------- caja de mensajes --------- */
+.main .chat-container .chat-box {
+    height: 330px;
+    margin: 10px;
+    overflow:auto;
+    scroll-behavior: smooth;
+}
+
+.bot-msg {
+    width: 70%;
+    padding: 5px;
+    background-color: blueviolet;
+    float: left;
+    margin: 5px;
+    border-radius: 0px 5px 5px 5px;
+    padding: 8px;
+    position: relative;
+    color: white;
+    font-weight: 500;
+}
+
+.bot-msg::before {
+    display: block;
+    content: "";
+    width: 10px;
+    height: 10px;
+    background-color: blueviolet;
+    border: 20px;
+    position: absolute;
+    top: 0;
+    left: -5px;
+}
+
+.user-msg {
+    float: right;
+    width: 70%;
+    padding: 5px;
+    background-color: whitesmoke;
+    margin: 5px;
+    border-radius: 5px 0px 5px 5px;
+    padding: 8px;
+    position: relative;
+}
+.user-msg::before {
+    display: block;
+    content: "";
+    width: 10px;
+    height: 10px;
+    background-color: whitesmoke;
+    border: 20px;
+    position: absolute;
+    top: 0;
+    right: -5px;
+}
+
+
+
+
+/* --------form -------------  */
+.main .chat-container .form {
+    height: 65px;
+    position: relative;
+    margin: 10px ;
+   border-top: 1px solid silver;
+}
+
+.main .chat-container .form h5 {
+    font-size: 16px;
+    padding-top: 5px;
+}
+
+.form form {
+    padding: 5px;
+}
+
+.main .chat-container .form input {
+    width: 300px;
+    height: 30px;
+    border-radius: 5px;
+    border: 1px solid;
+    padding: 5px;
+}
+
+.main .chat-container .form button {
+    width: 50px;
+    height: 30px;
+    border-radius: 5px;
+    border: 1px solid;
+}
