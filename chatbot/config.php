@@ -4,6 +4,6 @@
 define("HOST", "localhost");
 define("USER", "root");
 define("PASS", "");
-define("DDBB", "bot")
+define("DDBB", "bot");
 
 ?>
