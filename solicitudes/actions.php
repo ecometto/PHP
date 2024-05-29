@@ -3,6 +3,7 @@ include './ddbb/conexion.php';
 $id = "";
 $title = "";
 $comments = "";
+$files_list = [];
 if ($_GET) {
     if (isset($_GET['id'])) {
         $id = $_GET['id'];
@@ -15,14 +16,23 @@ if ($_GET) {
 }
 
 if ($_POST) {
-    $id=$_POST['id'];
-    //hacer update de los comentarios de la base de datos.
-    //Despues veremos lo del archivo adjunto y si se puede hacer un array con más de un archivo
-    print_r($_POST);
+    $id = $_POST['id'];
+    if ($_POST['comment'] !== "") {
+        $last_comment = "<b>" . date("d/m/Y") . "</b>" . "<br>" . $_POST['comment'] . "<br><br>";
+        $merged_comments = $comments . $last_comment;
+        $sql = "update requests set request_comments = '$merged_comments' where id= $id";
+        $query = mysqli_query($conn, $sql);
+        if ($query) {
+            echo "<script>
+                    alert('Comment successfully added.');
+                    window.location.href = './actions.php?id=$id' 
+                </script>";
+        }
+    }
 }
-// if($_FILES){
-//     echo $_FILES['file']['tmp_name'];
-// }
+if ($_FILES) {
+    move_uploaded_file($_FILES['file']['tmp_name'], './files/' . $_FILES['file']['name']);
+}
 
 ?>
 
@@ -54,9 +64,28 @@ if ($_POST) {
         <hr>
 
         <div class="container">
-            <b><i>
-                    Previous Comments:
-                </i></b>
+
+            <b><i> Status: </i></b> <br>
+            <select name="status">
+                <option <?php
+                        if ($data['request_status'] == 1) {
+                            echo "selected";
+                        }
+                        ?> value="1">New</option>
+                <option <?php
+                        if ($data['request_status'] == 2) {
+                            echo "selected";
+                        }
+                        ?> value="2">In Course</option>
+                <option <?php
+                        if ($data['request_status'] == 3) {
+                            echo "selected";
+                        }
+                        ?> value="3">Finishd</option>
+            </select>
+
+            <br><br>
+            <b><i> Previous Comments: </i></b>
             <p class="border p-4 rouded">
                 <?php
                 if ($comments !== "") {
@@ -66,14 +95,25 @@ if ($_POST) {
                 }
                 ?>
             </p>
+            <p>Related Files:</p>
+            <p><?php
+            if ($data['request_files'] !== ""){
+                $files_list = explode(",", $data['request_files']);
+                foreach($files_list as $file){
+                    echo "<a href='./files/$file'>$file</a> <br>";
+                }
+            }
+            ?></p>
+            <a href="./files/$file"></a>
 
             <form action="" class="bg-light p-4" method="POST" enctype="multipart/form-data">
-                <input type="hidden" name="id" value= <?php echo $data[0]?> >
-                <textarea class="text-area mb-2" name="comment" placeholder="Add a comment here">
-                </textarea>
+                <input type="hidden" name="id" value=<?php echo $data[0] ?>>
+                <textarea class="text-area mb-2" name="comment" placeholder="Add a comment here"></textarea>
                 <input class="form-control mb-2" type="file" name="file">
-                <input class="btn btn-primary mb-2" type="submit" name="enviar" value="Enviar">
+                <input class="btn btn-primary mb-2" type="submit" name="enviar" value="Modificar">
             </form>
+
+            <a class="btn btn-outline-dark" href="./index.php">BACK</a>
         </div>
 
     </div>
