@@ -1,0 +1,22 @@
+[
+    {
+        "name":"Jhon Wallas",
+        "gender":"M",
+        "hobbies":["dance", "tech"],
+        "nationality":"Argentina"
+    },
+    
+    {
+        "name":"Jenny Lopez",
+        "gender":"F",
+        "hobbies":["dance", "music", "tech"],
+        "nationality":"Brasil"
+    },
+    
+    {
+        "name":"Richard Houston",
+        "gender":"M",
+        "hobbies":["sports"],
+        "nationality":"Argentina"
+    }
+]
