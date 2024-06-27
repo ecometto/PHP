@@ -1,0 +1,10 @@
+# Activar el RewriteEngine, que permite la reescritura de URLs
+RewriteEngine On
+
+# Base del proyecto, modificar si no está en el directorio raíz
+ RewriteBase /programacion/php/basicMVC2/
+
+# Redirigir todas las solicitudes a index.php excepto los archivos y directorios existentes
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^ index.php [QSA,L]
