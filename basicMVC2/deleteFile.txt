@@ -1,0 +1,3 @@
+this is a test file.
+
+I have to delete it before finish with the tests.
